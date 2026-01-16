@@ -81,15 +81,20 @@ const LoginForm = () => {
             <Card className="w-full max-w-[480px] border-white/20 bg-white/80 backdrop-blur-xl shadow-2xl relative z-10 overflow-hidden transition-all duration-300">
                 <div className="absolute top-0 left-0 w-full h-1.5 bg-linear-to-r from-indigo-600 via-purple-600 to-pink-600" />
 
-                <CardHeader className="text-center space-y-4 pt-10 pb-6">
-                    <CardTitle className="text-[28px] font-extrabold text-[#1a1b25] tracking-tight leading-tight">
+                <CardHeader className="text-center pt-8 pb-5">
+                    <CardTitle className="text-3xl md:text-3xl font-bold text-gray-900">
                         Get more opportunities
                     </CardTitle>
                 </CardHeader>
 
+
                 <CardContent className="space-y-6 px-8 pb-10">
                     {/* Social Login */}
-                    <Button variant="outline" className="w-full flex gap-3 h-12 bg-white hover:bg-gray-50 border-gray-200 text-gray-700 font-medium transition-all hover:scale-[1.01] shadow-sm">
+                    <Button
+                        type="button"
+                        variant="outline"
+                        className="w-full flex gap-3 h-12 bg-white hover:bg-gray-50 border-gray-200 text-gray-700 font-medium transition-all hover:scale-[1.01] shadow-sm cursor-pointer active:scale-[0.98]"
+                    >
                         <svg className="w-5 h-5" viewBox="0 0 24 24">
                             <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
                             <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
@@ -98,6 +103,7 @@ const LoginForm = () => {
                         </svg>
                         Sign Up with Google
                     </Button>
+
 
                     <div className="relative py-2">
                         <div className="absolute inset-0 flex items-center">
@@ -113,69 +119,117 @@ const LoginForm = () => {
                     <form onSubmit={handleSubmit} className="space-y-5">
                         {/* Name Field */}
                         <div className="space-y-2">
-                            <label className="text-sm font-bold text-gray-700 block text-left">Full name</label>
+                            <label
+                                htmlFor="fullName"
+                                className="text-sm font-bold text-gray-700 block text-left cursor-pointer"
+                            >
+                                Full name
+                            </label>
+
                             <div className="relative group">
                                 <Input
+                                    id="fullName"
                                     name="fullName"
                                     value={formData.fullName}
                                     onChange={handleChange}
                                     placeholder="Enter your full name"
-                                    className={`h-12 bg-white border-gray-200 focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-base ${errors.fullName ? "border-red-500 focus:ring-red-500/20" : ""}`}
+                                    className={`h-12 bg-white border-gray-200 focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-base ${errors.fullName ? "border-red-500 focus:ring-red-500/20" : ""
+                                        }`}
                                 />
                             </div>
-                            {errors.fullName && <p className="text-red-500 text-xs text-left mt-1 animate-in fade-in slide-in-from-top-1">{errors.fullName}</p>}
+
+                            {errors.fullName && (
+                                <p className="text-red-500 text-xs text-left mt-1 animate-in fade-in slide-in-from-top-1">
+                                    {errors.fullName}
+                                </p>
+                            )}
                         </div>
+
 
                         {/* Email Field */}
                         <div className="space-y-2">
-                            <label className="text-sm font-bold text-gray-700 block text-left">Email Address</label>
+                            <label
+                                htmlFor="email"
+                                className="text-sm font-bold text-gray-700 block text-left cursor-pointer"
+                            >
+                                Email Address
+                            </label>
+
                             <div className="relative group">
                                 <Input
+                                    id="email"
                                     name="email"
                                     type="email"
                                     value={formData.email}
                                     onChange={handleChange}
                                     placeholder="Enter email address"
-                                    className={`h-12 bg-white border-gray-200 focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-base ${errors.email ? "border-red-500 focus:ring-red-500/20" : ""}`}
+                                    className={`h-12 bg-white border-gray-200 focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-base ${errors.email ? "border-red-500 focus:ring-red-500/20" : ""
+                                        }`}
                                 />
                             </div>
-                            {errors.email && <p className="text-red-500 text-xs text-left mt-1 animate-in fade-in slide-in-from-top-1">{errors.email}</p>}
+
+                            {errors.email && (
+                                <p className="text-red-500 text-xs text-left mt-1 animate-in fade-in slide-in-from-top-1">
+                                    {errors.email}
+                                </p>
+                            )}
                         </div>
+
 
                         {/* Password Field */}
                         <div className="space-y-2">
-                            <label className="text-sm font-bold text-gray-700 block text-left">Password</label>
+                            <label
+                                htmlFor="password"
+                                className="text-sm font-bold text-gray-700 block text-left cursor-pointer"
+                            >
+                                Password
+                            </label>
+
                             <div className="relative group">
                                 <Input
+                                    id="password"
                                     name="password"
                                     type={showPassword ? "text" : "password"}
                                     value={formData.password}
                                     onChange={handleChange}
                                     placeholder="Enter password"
-                                    className={`h-12 bg-white border-gray-200 focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-base ${errors.password ? "border-red-500 focus:ring-red-500/20" : ""}`}
+                                    className={`h-12 bg-white border-gray-200 focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-base ${errors.password ? "border-red-500 focus:ring-red-500/20" : ""
+                                        }`}
                                 />
+
                                 <button
                                     type="button"
                                     onClick={() => setShowPassword(!showPassword)}
-                                    className="absolute right-4 top-4 text-gray-400 hover:text-gray-600 transition-colors focus:outline-none"
+                                    className="absolute right-4 top-4 text-gray-400 hover:text-gray-600 transition-colors focus:outline-none cursor-pointer active:scale-95"
                                 >
                                     {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
                                 </button>
+
                             </div>
-                            {errors.password && <p className="text-red-500 text-xs text-left mt-1 animate-in fade-in slide-in-from-top-1">{errors.password}</p>}
+
+                            {errors.password && (
+                                <p className="text-red-500 text-xs text-left mt-1 animate-in fade-in slide-in-from-top-1">
+                                    {errors.password}
+                                </p>
+                            )}
                         </div>
+
 
                         <Button
                             type="submit"
                             disabled={isLoading}
-                            className="w-full h-12 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-base rounded-lg shadow-lg hover:shadow-indigo-500/30 transition-all duration-300 transform hover:-translate-y-0.5 mt-2"
+                            className={`w-full h-12 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-base rounded-lg shadow-lg hover:shadow-indigo-500/30 transition-all duration-300 transform hover:-translate-y-0.5 mt-2 cursor-pointer active:scale-[0.98] ${isLoading ? "cursor-not-allowed opacity-80" : ""
+                                }`}
                         >
                             {isLoading ? (
-                                <><Loader2 className="mr-2 h-5 w-5 animate-spin" /> Processing...</>
+                                <>
+                                    <Loader2 className="mr-2 h-5 w-5 animate-spin" /> Processing...
+                                </>
                             ) : (
                                 "Continue"
                             )}
                         </Button>
+
                     </form>
 
                     <div className="space-y-6 pt-2">
