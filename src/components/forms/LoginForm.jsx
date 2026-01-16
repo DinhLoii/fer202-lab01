@@ -53,7 +53,7 @@ const LoginForm = () => {
             // Simulate API call
             await new Promise(resolve => setTimeout(resolve, 1500))
             setIsLoading(false)
-            alert("Registration Successful! Welcome aboard.")
+            alert("Login Successful! Welcome aboard.")
         }
     }
 
